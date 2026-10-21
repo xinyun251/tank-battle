@@ -1,6 +1,8 @@
 # 坦克大战 · Tank Battle
 
-一个用原生 HTML + Canvas 写的坦克大战游戏。**零依赖、无需构建、单机可玩**，双击 `index.html` 就能开始，也可以直接部署到 GitHub Pages。
+一个用原生 HTML + Canvas 写的坦克大战游戏。**零依赖、无需构建、单机可玩**，双击 `index.html` 就能开始。
+
+**在线试玩**：<https://xinyun251.github.io/tank-battle/>
 
 ![screenshot](docs/screenshot.png)
 
@@ -75,11 +77,15 @@ npx serve .
 | `W` | 水面（坦克不能过，子弹可过） |
 | `T` | 草丛（坦克可过，遮挡视线） |
 
-最后一排会由程序清空以保证通行，基地固定在 (6, 12)。
+最后一排会由程序清空以保证通行，基地固定在 (6, 12)，开局会自动在基地三面砌一圈砖墙护墙。
 
 ## 部署到 GitHub Pages
 
-仓库 **Settings → Pages**，Source 选 `Deploy from a branch`，分支选 `main`、目录选 `/ (root)`，保存后等一两分钟即可通过 `https://<用户名>.github.io/tank-battle/` 访问。
+本仓库已开启 Pages（分支 `main`、目录 `/`），访问地址：
+
+<https://xinyun251.github.io/tank-battle/>
+
+自己复刻时：仓库 **Settings → Pages**，Source 选 `Deploy from a branch`，分支选 `main`、目录选 `/ (root)`，保存后等一两分钟即可通过 `https://<用户名>.github.io/tank-battle/` 访问。
 
 > 私有仓库的 Pages 需要 GitHub Pro 等付费方案；公开仓库免费。
 

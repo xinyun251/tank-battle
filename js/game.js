@@ -1256,9 +1256,10 @@
     },
 
     buildBaseWalls(type) {
+      // 基地左右两侧 + 上方一整排，形成「凹」字形护墙（下方是地图边界）
       const c = 6, r = 12;
-      for (let dr = -1; dr <= 0; dr++) {
-        for (let dc = -1; dc <= 1; dc++) {
+      for (let dc = -1; dc <= 1; dc++) {
+        for (let dr = -1; dr <= 0; dr++) {
           if (dr === 0 && dc === 0) continue;
           setTile(c + dc, r + dr, type);
         }
