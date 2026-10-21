@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f14">
+<meta name="description" content="HTML Canvas 坦克大战 —— 纯前端、零依赖、单机可玩，支持键盘与触屏操作。">
+<title>坦克大战 · Tank Battle</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230b0f14'/><rect x='26' y='30' width='48' height='44' rx='6' fill='%23f5c542'/><rect x='46' y='8' width='8' height='28' fill='%23f5c542'/></svg>">
+</head>
+<body>
+<div id="app">
+
+  <div class="stage-wrap">
+    <div id="stage">
+      <canvas id="game" width="416" height="416"></canvas>
+
+      <!-- 结算 / 暂停 遮罩 -->
+      <div id="overlay" class="overlay hidden">
+        <div class="panel">
+          <h2 id="ovTitle">暂停</h2>
+          <p id="ovDesc">按 P 或点击继续</p>
+          <div id="ovStats" class="ov-stats"></div>
+          <div class="ov-btns">
+            <button id="ovPrimary" class="btn primary">继续</button>
+            <button id="ovSecondary" class="btn">重新开始</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 开始菜单 -->
+      <div id="menu" class="overlay">
+        <div class="panel menu-panel">
+          <div class="logo">
+            <span class="logo-cn">坦克大战</span>
+            <span class="logo-en">TANK&nbsp;BATTLE</span>
+          </div>
+          <div class="menu-rows">
+            <label class="row">
+              <span>难度</span>
+              <span class="seg" data-group="difficulty">
+                <button data-value="easy">简单</button>
+                <button data-value="normal" class="on">普通</button>
+                <button data-value="hard">困难</button>
+              </span>
+            </label>
+            <label class="row">
+              <span>生命</span>
+              <span class="seg" data-group="lives">
+                <button data-value="3">3</button>
+                <button data-value="5" class="on">5</button>
+                <button data-value="9">9</button>
+              </span>
+            </label>
+            <label class="row">
+              <span>音效</span>
+              <span class="seg" data-group="sound">
+                <button data-value="on" class="on">开</button>
+                <button data-value="off">关</button>
+              </span>
+            </label>
+          </div>
+          <button id="startBtn" class="btn primary big">开始游戏</button>
+          <p class="hint">WASD / 方向键 移动 &nbsp;·&nbsp; 空格 / J 开火 &nbsp;·&nbsp; P 暂停</p>
+          <p class="hint sub">手机可直接使用屏幕虚拟按键</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hud">
+    <div class="hud-block">
+      <div class="hud-label">得分</div>
+      <div id="score" class="hud-value">0</div>
+    </div>
+    <div class="hud-block">
+      <div class="hud-label">关卡</div>
+      <div id="stageNo" class="hud-value small">1 / 5</div>
+    </div>
+    <div class="hud-block">
+      <div class="hud-label">剩余敌人</div>
+      <div id="enemyLeft" class="hud-value small">20</div>
+    </div>
+    <div class="hud-block">
+      <div class="hud-label">生命</div>
+      <div id="lives" class="hud-lives"></div>
+    </div>
+
+    <div class="hud-block grow">
+      <div class="hud-label">操作说明</div>
+      <ul class="keys">
+        <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>移动</span></li>
+        <li><kbd>空格</kbd><kbd>J</kbd><span>开火</span></li>
+        <li><kbd>P</kbd><span>暂停</span></li>
+        <li><kbd>R</kbd><span>重开</span></li>
+        <li><kbd>M</kbd><span>静音</span></li>
+      </ul>
+      <p class="tip">保护基地 🏠，消灭所有敌方坦克。击落闪烁的红色坦克会掉落道具。</p>
+    </div>
+
+    <button id="restartBtn" class="btn ghost">重新开始 (R)</button>
+  </aside>
+
+  <!-- 移动端虚拟按键 -->
+  <div id="touch" class="touch hidden">
+    <div class="dpad">
+      <button class="tbtn up"    data-dir="up">▲</button>
+      <button class="tbtn left"  data-dir="left">◀</button>
+      <button class="tbtn right" data-dir="right">▶</button>
+      <button class="tbtn down"  data-dir="down">▼</button>
+    </div>
+    <button id="fireBtn" class="tbtn fire">开火</button>
+  </div>
+
+</div>
+<script src="js/game.js"></script>
+</body>
+</html>
